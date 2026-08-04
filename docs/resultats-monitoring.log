@@ -1,0 +1,30 @@
+[15:38:39] HTTP 200  OK   (ok=1 fail=0)
+[15:38:39] HTTP 200  OK   (ok=2 fail=0)
+[15:38:40] HTTP 200  OK   (ok=3 fail=0)
+...
+[15:38:57] HTTP 200  OK   (ok=35 fail=0)
+[15:38:57] HTTP 000  FAIL   (ok=35 fail=1)
+[15:39:00] HTTP 000  FAIL   (ok=35 fail=2)
+[15:39:00] HTTP 000  FAIL   (ok=35 fail=3)
+[15:39:01] HTTP 000  FAIL   (ok=35 fail=4)
+[15:39:01] HTTP 000  FAIL   (ok=35 fail=5)
+[15:39:02] HTTP 000  FAIL   (ok=35 fail=6)
+[15:39:02] HTTP 000  FAIL   (ok=35 fail=7)
+[15:39:03] HTTP 000  FAIL   (ok=35 fail=8)
+[15:39:03] HTTP 200  OK   (ok=36 fail=8)
+...
+[15:39:21] HTTP 200  OK   (ok=69 fail=8)
+[15:39:22] HTTP 000  FAIL   (ok=69 fail=9)
+[15:39:25] HTTP 000  FAIL   (ok=69 fail=10)
+[15:39:25] HTTP 000  FAIL   (ok=69 fail=11)
+[15:39:26] HTTP 000  FAIL   (ok=69 fail=12)
+[15:39:26] HTTP 000  FAIL   (ok=69 fail=13)
+[15:39:27] HTTP 000  FAIL   (ok=69 fail=14)
+[15:39:27] HTTP 000  FAIL   (ok=69 fail=15)
+[15:39:28] HTTP 000  FAIL   (ok=69 fail=16)
+[15:39:30] HTTP 000  FAIL   (ok=69 fail=17)
+[15:39:31] HTTP 200  OK   (ok=70 fail=17)
+...
+[15:39:38] HTTP 200  OK   (ok=83 fail=17)
+
+Arret. Total: ok=83 fail=17
