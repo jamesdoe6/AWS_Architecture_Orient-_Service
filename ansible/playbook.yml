@@ -1,0 +1,9 @@
+---
+- name: Create a directory
+  hosts: localhost
+  tasks:
+    - name: create a directory
+      ansible.builtin.file:
+        path: "/home/jdoe/AWS_Architecture_Orienté_Service/ansible/"
+        state: directory
+        mode: "0755"
