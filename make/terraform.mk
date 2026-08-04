@@ -15,3 +15,13 @@ tf.fmt.check: ## Check formatting of Terraform configuration files in the specif
 
 .PHONY: tf.fmt.ci
 tf.fmt.ci: tf.fmt.check
+
+.PHONY: infra-plan infra-apply infra-destroy
+infra-plan:
+	cd infra && terraform plan
+
+infra-apply:
+	cd infra && terraform apply -auto-approve
+
+infra-destroy:
+	cd infra && terraform destroy -auto-approve

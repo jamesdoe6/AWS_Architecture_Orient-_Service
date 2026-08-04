@@ -13,3 +13,7 @@ aws.list-roles:
 .PHONY: aws.subnet
 aws.subnet:
 	@aws ec2 describe-subnets
+
+.PHONY: whoami
+whoami:
+	aws sts get-caller-identity
