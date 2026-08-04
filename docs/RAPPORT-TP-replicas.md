@@ -58,19 +58,37 @@ Situation 2, replicas=1) au moment des suppressions, ou que le Service /
 readinessProbe necessitait un reglage plus fin (periodSeconds trop long,
 delai de propagation du endpoint).
 
+## Situation 1 (test corrige) : zero-downtime confirme
+
+Test refait avec verification explicite de 3 replicas actifs avant suppression du pod.
+
+- Requetes envoyees : 116
+- Succes (HTTP 200) : 116
+- Echecs (HTTP 000) : 0
+- Taux de disponibilite : 100%
+
+Le pod `demo-web-54947fb8bc-2p96h` a ete supprime en cours de test (t=46s).
+Aucune requete n'a echoue : les 2 pods restants ont absorbe le trafic pendant
+la recreation du troisieme pod, confirmant le comportement zero-downtime
+attendu avec 3 replicas actifs et une readinessProbe fonctionnelle.
+
+![Situation 1 - Zero downtime](images/situation1_final.png)
+
+## Test Makefile end-to-end (make e2e.test)
+
+Execution reussie de la cible `e2e.test` :
+
+1. Etat initial : 3 pods Running (dont 1 age de 2m46s)
+2. Suppression du pod `demo-web-54947fb8bc-bhpd5`
+3. Etat final : 3 pods Running, dont le nouveau pod `demo-web-54947fb8bc-vmjz7` cree en 6 secondes
+
+Le Deployment maintient automatiquement le nombre de replicas desire (auto-guerison Kubernetes).
+
 ## Visualisations
 
 ### Timeline des requêtes HTTP
 
 ![Timeline disponibilité](images/timeline_disponibilite.png)
-
-### Taux de succès glissant
-
-![Taux de succès](images/taux_succes_v2.png)
-
-### Bilan global
-
-![Bilan requêtes](images/bilan_requetes_v2.png)
 
 ## Recommandations
 
