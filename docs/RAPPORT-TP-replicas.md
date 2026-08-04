@@ -58,6 +58,20 @@ Situation 2, replicas=1) au moment des suppressions, ou que le Service /
 readinessProbe necessitait un reglage plus fin (periodSeconds trop long,
 delai de propagation du endpoint).
 
+## Visualisations
+
+### Timeline des requêtes HTTP
+
+![Timeline disponibilité](images/timeline_disponibilite.png)
+
+### Taux de succès glissant
+
+![Taux de succès](images/taux_succes_v2.png)
+
+### Bilan global
+
+![Bilan requêtes](images/bilan_requetes_v2.png)
+
 ## Recommandations
 
 1. Reduire `periodSeconds` de la `readinessProbe` (ex: 1s au lieu de 2s) pour
