@@ -28,3 +28,7 @@ docker.img.push: guard-IMAGE_NAME ## Push the docker image to DockerHub
 
 .PHONY: dockerhub.push
 dockerhub.push: dockerhub.login docker.img.tag docker.img.push ## Full DockerHub
+
+# .PHONY: docker.k8s
+# docker.k8s: guard-IMAGE_NAME ## Deploy the docker image to Kubernetes
+# 	kubectl config use-context docker-desktop

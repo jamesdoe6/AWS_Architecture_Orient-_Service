@@ -1,0 +1,57 @@
+---
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: jeremie-web-server
+  annotations:
+    description: "Deployment for the Jeremie web server application"
+    context: "This deployment manages the Jeremie web server pods in the Kubernetes cluster."
+    author: "Jeremie"
+spec:
+  replicas: 3 #number of pod replicas
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+      - name: web-server # DNS label for the container
+        image: jamesdoe6/web-server:1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        resources:
+          requests:
+            memory: "128Mi" # 128 MiB
+            cpu: "100m" # 100 millicores
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jeremie-web-server-service
+spec:
+  type: NodePort # reachable from outside the cluster
+  selector:
+    app: web-server
+  ports:
+  - port: 80 # the service port (inside the cluster)
+    targetPort: 80 # the container port
+    nodePort: 30080 # the port on each node to expose the service

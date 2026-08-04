@@ -6,3 +6,5 @@ include make/aws.mk
 include make/terraform.mk
 include make/chore.mk
 include make/normalize.mk
+include make/kube.mk
+include make/e2e.mk
