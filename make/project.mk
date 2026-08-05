@@ -28,10 +28,16 @@ verify:
 
 ## Demontage propre (a lancer apres la soutenance)
 down:
-	kubectl delete -f apps/ --recursive || true
-	kubectl delete -f platform/ --recursive || true
-	kubectl delete -f policies/ --recursive || true
+	kubectl delete -f apps/ --recursive --ignore-not-found=true
+	kubectl delete -f platform/ --recursive --ignore-not-found=true
+	kubectl delete -f policies/ --recursive --ignore-not-found=true
+	@echo ">>> Verification des ressources restantes :"
+	kubectl get all -A --no-headers | grep -v kube-system || echo "Namespace default propre."
 	minikube stop
+
+## Nettoyage total (reset complet, avant remise a zero)
+down-full: down
+	minikube delete --all --purge
 
 clean:
 	@echo "Nettoyage des ressources locales (build artifacts, etc.)"
