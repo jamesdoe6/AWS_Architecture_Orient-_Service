@@ -1,3 +1,5 @@
+.PHONY: all clean test
+
 include make/common.mk
 include make/ansible.mk
 include make/docker.mk
@@ -8,3 +10,4 @@ include make/chore.mk
 include make/normalize.mk
 include make/kube.mk
 include make/e2e.mk
+include make/project.mk

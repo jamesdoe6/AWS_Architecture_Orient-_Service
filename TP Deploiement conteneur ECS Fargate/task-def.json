@@ -1,0 +1,13 @@
+{
+  "family": "jeremie-server-tp1",
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::747082607185:role/ecsTaskExecutionRole",
+  "containerDefinitions": [{
+    "name": "web",
+    "image": "747082607185.dkr.ecr.eu-west-3.amazonaws.com/jeremie-server-tp1:1.0",
+    "portMappings": [{ "containerPort": 80 }]
+  }]
+}
