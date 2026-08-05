@@ -59,3 +59,7 @@ tf.apply: tf.plan ## Apply the changes required to reach the desired state of th
 .PHONY: tf.destroy
 tf.destroy: tf.init ## Destroy Terraform-managed infrastructure in the specified environment directory
 	@terraform -chdir=$(TF_DIR) destroy -auto-approve
+
+.PHONY: all clean test
+test: ## Placeholder pour les tests (lint + validate)
+	@$(MAKE) tf.lint tf.fmt.check
