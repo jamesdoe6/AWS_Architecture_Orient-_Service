@@ -28,45 +28,40 @@ variable "instance_type" {
   }
 }
 
-variable "instance_ami" {
-  type = string
-  validation {
-    condition     = "ami-0e207c18bb303cc68" == var.instance_ami
-    error_message = "The instance_ami variable must be a valid ami-0e207c18bb303cc68."
-  }
-}
+# variable "instance_ami" {
+#   type = string
+#   validation {
+#     condition     = "ami-0e207c18bb303cc68" == var.instance_ami
+#     error_message = "The instance_ami variable must be a valid ami-0e207c18bb303cc68."
+#   }
+# }
 
 variable "subnet_id" {
   type = string
 }
 
-variable "vpc_id" {
-  type = string
-}
+# variable "vpc_id" {
+#   type = string
+# }
 
-variable "cidr" {
-  type = string
-  validation {
-    condition     = can(regex("^172\\.31\\.0\\.0/16$", var.cidr))
-    error_message = "The cidr variable must be a valid CIDR block in the format 172.31.0.0/16."
-  }
-}
+# variable "cidr" {
+#   type = string
+#   validation {
+#     condition     = can(regex("^172\\.31\\.0\\.0/16$", var.cidr))
+#     error_message = "The cidr variable must be a valid CIDR block in the format 172.31.0.0/16."
+#   }
+# }
 
-variable "igw" {
-  type = string
-}
-
-variable "sg" {
-  type = string
-}
-
-
-variable "security_group_ids" {
-  type        = list(string)
-  description = "List of security group IDs to associate with the instance."
-}
+# variable "igw" {
+#   type = string
+# }
 
 variable "vpc_security_group_ids" {
   type        = list(string)
   description = "List of VPC security group IDs to associate with the instance."
+}
+
+variable "public_key_path" {
+  type        = string
+  description = "Path to the public key file for the key pair."
 }

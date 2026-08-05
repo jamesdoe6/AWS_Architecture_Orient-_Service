@@ -14,6 +14,9 @@ TAG := 1.0
 #==========================================
 .DEFAUTT_GOAL := help
 .PHONY: help check-tools.
+ENV ?= dev
+TF_DIR := infra/envs/$(ENV)
+TF_FMT_DIR := infra
 
 guard-%:
 	@[ -n "$($*)" ] || (echo -e "$(ERROR_COLOR)Error: $* is not defined.$(NO_COLOR)"; exit 1;)

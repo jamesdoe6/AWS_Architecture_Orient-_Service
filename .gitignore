@@ -4,3 +4,5 @@ D.save
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+tflint
+checksums.txt
