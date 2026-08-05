@@ -6,3 +6,40 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
         args: ["--allow-multiple-documents"]
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        name: yamllint
+        description: This hook runs yamllint.
+        entry: yamllint
+        language: python
+        types: [file, yaml]
+
+  - repo: https://github.com/AleksaC/terraform-py
+    rev: v1.15.8
+    hooks:
+      - id: tf-fmt
+      - id: tf-validate
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.2
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/checkmake/checkmake.git
+    rev: 0.2.2
+    hooks:
+    # Use this hook to let pre-commit build checkmake in its sandbox
+      - id: checkmake
