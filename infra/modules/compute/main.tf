@@ -1,6 +1,7 @@
 locals {
   prefix = "${var.author}-${var.environment}"
   tags = {
+    Name        = "${var.author}-${var.environment}"
     Project     = var.project
     Environment = var.environment
     Author      = var.author

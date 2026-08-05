@@ -23,8 +23,5 @@ kube.tunnel: ## Create a tunnel to the Kubernetes cluster
 kube.start: ## Start the Kubernetes cluster
 	@minikube start
 
-kube.tunnel:	## Create a tunnel to the Kubernetes cluster
-	@kubectl service $(SERVICE_NAME)
-
 kube.pfwd: ## Port forward to the Kubernetes service
 	@kubectl port-forward svc/$(SERVICE_NAME) 8080:80

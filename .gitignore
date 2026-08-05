@@ -6,3 +6,5 @@ D.save
 .terraform.lock.hcl
 tflint
 checksums.txt
+*.tfplan
+tfplan

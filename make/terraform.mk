@@ -43,3 +43,19 @@ tf.normalize: tf.fmt tf.lint
 
 .PHONY:
 tf.check.ci: tf.fmt.ci tf.lint.ci tf.trivy
+
+.PHONY: tf.validate
+tf.validate: tf.init ## Validate Terraform configuration files in the specified environment directory
+	@terraform -chdir=$(TF_DIR) validate
+
+.PHONY: tf.plan
+tf.plan: tf.init ## Generate and show an execution plan for Terraform in the specified environment directory
+	@terraform -chdir=$(TF_DIR) plan -out=tfplan
+
+.PHONY: tf.apply
+tf.apply: tf.plan ## Apply the changes required to reach the desired state of the configuration in the specified environment directory
+	@terraform -chdir=$(TF_DIR) apply -auto-approve
+
+.PHONY: tf.destroy
+tf.destroy: tf.init ## Destroy Terraform-managed infrastructure in the specified environment directory
+	@terraform -chdir=$(TF_DIR) destroy -auto-approve
