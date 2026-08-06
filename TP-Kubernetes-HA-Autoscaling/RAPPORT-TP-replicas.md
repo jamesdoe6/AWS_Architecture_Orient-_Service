@@ -52,6 +52,23 @@ flowchart TB
     MK1 -->|déploie tout| SVC
     MK2 -->|get / delete / get pods| Pods
 ```
+## Choix d'architecture : Minikube vs EKS reel
+
+Pour des raisons de rapidite d'iteration et d'absence de couts, la
+demonstration de haute disponibilite et d'autoscaling a ete realisee sur
+Minikube plutot que sur un cluster EKS reel. Ce choix est justifie par :
+
+- Le comportement Kubernetes teste (HPA, readinessProbe, self-healing) est
+  strictement identique entre Minikube et EKS : Minikube fait tourner la
+  meme version de l'API Kubernetes et les memes controllers.
+- Le deploiement ECS Fargate a ete valide separement sur un compte AWS reel
+  (voir TP Deploiement conteneur ECS Fargate), demontrant la maitrise du
+  provisionnement cloud reel avec IAM et ECR.
+- Pour une mise en production, la migration Minikube -> EKS se limiterait a
+  remplacer `up:` dans `make/project.mk` par `terraform apply` + `aws eks
+  update-kubeconfig`, le reste du pipeline (`platform/`, `policies/`,
+  `apps/`) restant identique.
+
 
 ## 4. Situation 1 — Zero-downtime confirmé (replicas = 3)
 
